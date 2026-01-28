@@ -1,10 +1,6 @@
 class RepositoriesController < ApplicationController
   include Concerns::Pageable
 
-  # Google AdSense has asked us to remove ads for the following repositories
-  GOOGLE_BANNED_REPOS = %w[
-    RicterZ/nhentai
-  ]
   GITHUB_HOST = 'https://github.com'
 
   before_action :validate_page_param, only: :index
@@ -18,7 +14,6 @@ class RepositoriesController < ApplicationController
   def show
     @user = User.find_by!(login: params[:user_login])
     @repo = Repository.find_by!(full_name: "#{params[:user_login]}/#{params[:name]}")
-    @show_ads = GOOGLE_BANNED_REPOS.exclude?(@repo.full_name)
 
     # Workaround for path like *.js or *.css
     request.format = :html
