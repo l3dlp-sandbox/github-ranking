@@ -33,4 +33,9 @@ module ApplicationHelper
       end
     end
   end
+
+  def show_ads?
+    return @show_ads if defined?(@show_ads)
+    true
+  end
 end
