@@ -4,6 +4,7 @@ class RepositoriesController < ApplicationController
   # List of repositories banned by Google AdSense
   GOOGLE_BANNED_REPOS = %w[
     RicterZ/nhentai
+    mmistakes/staticman
   ]
   GITHUB_HOST = 'https://github.com'
 
